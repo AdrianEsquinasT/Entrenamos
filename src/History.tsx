@@ -54,10 +54,10 @@ export default function History({ store }: { store: Store }) {
                   <b>{fmtShort(s.d)}</b><span className="muted small">{day.name} · {day.focus}</span>
                   <span className="small muted">Sem {s.b}{s.b === 6 ? ' (descarga)' : ''}</span>
                 </div>
-                {day.slots.filter((sl) => s.x[sl.ex]).map((sl) => (
-                  <div key={sl.ex} className="hrow">
-                    <span>{EX[sl.ex].name}</span>
-                    <span className="sets-line">{s.x[sl.ex].map((st, i) => <span key={i} className="tag">{setTxt(st)}</span>)}</span>
+                {Object.keys(s.x).map((id) => (
+                  <div key={id} className="hrow">
+                    <span>{EX[id]?.name ?? id}</span>
+                    <span className="sets-line">{s.x[id].map((st, i) => <span key={i} className="tag">{setTxt(st)}</span>)}</span>
                   </div>
                 ))}
                 <button className="link danger" onClick={() => del(key)}>Borrar sesión</button>

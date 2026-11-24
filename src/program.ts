@@ -46,12 +46,14 @@ export const EXERCISES: ExDef[] = [
 export const EX: Record<string, ExDef> = Object.fromEntries(EXERCISES.map((e) => [e.id, e]));
 
 export const DAYS: Day[] = [
-  { id: 1, name: 'Día 1', focus: 'Pecho', color: '#ff7a1a', slots: [
-    { ex: 'press_mm', sets: 4 }, { ex: 'press_mm_inc', sets: 3 }, { ex: 'press_maq_inc', sets: 3 },
-    { ex: 'cierres_pecho', sets: 3, ss: 'A' }, { ex: 'lateral', sets: 3, ss: 'A' },
+  { id: 1, name: 'Día 1', focus: 'Espalda + bíceps', color: '#38bdf8', slots: [
+    { ex: 'jalon_abierto', sets: 3 }, { ex: 'remo_t', sets: 3 }, { ex: 'remo_polea', sets: 3 }, { ex: 'remo_mm', sets: 3 },
+    { ex: 'curl_mm', sets: 3 }, { ex: 'curl_sentado', sets: 2 },
   ] },
-  { id: 2, name: 'Día 2', focus: 'Espalda', color: '#38bdf8', slots: [
-    { ex: 'jalon_abierto', sets: 3 }, { ex: 'remo_t', sets: 3 }, { ex: 'remo_polea', sets: 3 }, { ex: 'remo_mm', sets: 3 }, { ex: 'remo_maq', sets: 2 },
+  { id: 2, name: 'Día 2', focus: 'Pecho + tríceps', color: '#ff7a1a', slots: [
+    { ex: 'press_mm', sets: 4 }, { ex: 'press_mm_inc', sets: 3 }, { ex: 'press_maq_inc', sets: 3 },
+    { ex: 'cierres_pecho', sets: 3, ss: 'A' }, { ex: 'triceps_polea', sets: 3, ss: 'A' },
+    { ex: 'triceps_nuca', sets: 3, ss: 'B' }, { ex: 'lateral', sets: 3, ss: 'B' },
   ] },
   { id: 3, name: 'Día 3', focus: 'Piernas + hombro', color: '#34d399', slots: [
     { ex: 'rdl', sets: 3 }, { ex: 'hacka', sets: 3 }, { ex: 'prensa', sets: 3 },
@@ -59,12 +61,10 @@ export const DAYS: Day[] = [
     { ex: 'aductor', sets: 2, ss: 'B' }, { ex: 'abductor', sets: 2, ss: 'B' },
     { ex: 'press_militar', sets: 3 },
   ] },
-  { id: 4, name: 'Día 4', focus: 'Brazos + hombro', color: '#f472b6', slots: [
+  { id: 4, name: 'Día 4', focus: 'Torso', color: '#f472b6', slots: [
     { ex: 'press_decl', sets: 3, ss: 'A' }, { ex: 'jalon_cerrado', sets: 3, ss: 'A' },
-    { ex: 'curl_mm', sets: 2, ss: 'B' }, { ex: 'triceps_nuca', sets: 2, ss: 'B' },
-    { ex: 'curl_maq', sets: 2, ss: 'C' }, { ex: 'triceps_maq', sets: 2, ss: 'C' },
-    { ex: 'curl_sentado', sets: 2, ss: 'D' }, { ex: 'triceps_polea', sets: 2, ss: 'D' },
-    { ex: 'lateral', sets: 3 },
+    { ex: 'remo_maq', sets: 3, ss: 'B' }, { ex: 'lateral', sets: 4, ss: 'B' },
+    { ex: 'curl_maq', sets: 3, ss: 'C' }, { ex: 'triceps_maq', sets: 3, ss: 'C' },
   ] },
 ];
 
