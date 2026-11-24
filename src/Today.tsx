@@ -52,7 +52,7 @@ export default function Today({ store }: { store: Store }) {
     const k = slot.ex;
     const sugg = suggest(def, lastBefore(log, slot.ex, date, key)?.sets, setsFor(slot, wk));
     const saved = cur?.x[k] ?? [];
-    const count = Math.max(setsFor(slot, wk), saved.length, extra[k] ?? 0);
+    const count = extra[k] ?? Math.max(setsFor(slot, wk), saved.length);
     const view = Array.from({ length: count }, (_, i) => {
       const e = edits[k]?.[i] ?? {};
       const w = e.w ?? (saved[i] ? String(saved[i][0]).replace('.', ',') : sugg.w !== null ? String(sugg.w).replace('.', ',') : '');
@@ -68,7 +68,7 @@ export default function Today({ store }: { store: Store }) {
       const k = slot.ex;
       const sugg = suggest(EX[slot.ex], lastBefore(log, slot.ex, date, key)?.sets, setsFor(slot, wk));
       const saved = cur?.x[k] ?? [];
-      const count = Math.max(setsFor(slot, wk), saved.length, nextExtra[k] ?? 0);
+      const count = nextExtra[k] ?? Math.max(setsFor(slot, wk), saved.length);
       const sets: SetRec[] = [];
       for (let i = 0; i < count; i++) {
         const e = nextEdits[k]?.[i] ?? {};
@@ -91,7 +91,14 @@ export default function Today({ store }: { store: Store }) {
     setEdits(next);
     save(next);
   };
-  const addSet = (k: string, current: number) => { const e = { ...extra, [k]: current + 1 }; setExtra(e); };
+  const addSet = (k: string, current: number) => { setExtra({ ...extra, [k]: current + 1 }); };
+  const removeSet = (k: string, current: number) => {
+    if (current <= 1) return;
+    const e = { ...extra, [k]: current - 1 };
+    const ne = { ...edits, [k]: (edits[k] ?? []).slice(0, current - 1) };
+    setExtra(e); setEdits(ne);
+    save(ne, e);
+  };
 
   // progreso
   let planned = 0, done = 0;
@@ -155,7 +162,7 @@ export default function Today({ store }: { store: Store }) {
                   </div>
                 ))}
               </div>
-              <button className="link" onClick={() => addSet(k, view.length)}>+ serie</button>
+              <div className="row-btns"><button className="link" onClick={() => addSet(k, view.length)}>+ serie</button><button className="link" disabled={view.length <= 1} onClick={() => removeSet(k, view.length)}>− serie</button></div>
             </section>
           );
         })}
