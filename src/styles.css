@@ -45,7 +45,9 @@ input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: -1
 .three { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
 .primary { width: 100%; padding: 14px; border: 0; border-radius: 14px; background: linear-gradient(135deg, #ff7a1a, #ff3d54); color: #fff; font-weight: 700; font-size: 16px; }
 .error { color: #ff8a8a; }
-.exgrid { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: start; }
+.exgrid { display: grid; grid-template-columns: 1fr; gap: 14px; align-items: stretch; grid-auto-rows: 1fr; }
+.exgrid > .card { height: 100%; display: flex; flex-direction: column; }
+.exgrid > .card .sets { flex: 1; }
 .ex-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 8px; }
 .ex { border-left: 4px solid var(--accent); }
 .pill { background: var(--accent); color: #111; padding: 2px 10px; border-radius: 999px; font-weight: 700; font-size: 12px; white-space: nowrap; }

@@ -61,10 +61,10 @@ export const DAYS: Day[] = [
   ] },
   { id: 4, name: 'Día 4', focus: 'Brazos + hombro', color: '#f472b6', slots: [
     { ex: 'press_decl', sets: 3, ss: 'A' }, { ex: 'jalon_cerrado', sets: 3, ss: 'A' },
-    { ex: 'curl_mm', sets: 3, ss: 'B' }, { ex: 'triceps_nuca', sets: 3, ss: 'B' },
-    { ex: 'curl_maq', sets: 3, ss: 'C' }, { ex: 'triceps_maq', sets: 3, ss: 'C' },
-    { ex: 'curl_sentado', sets: 3, ss: 'D' }, { ex: 'triceps_polea', sets: 3, ss: 'D' },
-    { ex: 'lateral', sets: 4 },
+    { ex: 'curl_mm', sets: 2, ss: 'B' }, { ex: 'triceps_nuca', sets: 2, ss: 'B' },
+    { ex: 'curl_maq', sets: 2, ss: 'C' }, { ex: 'triceps_maq', sets: 2, ss: 'C' },
+    { ex: 'curl_sentado', sets: 2, ss: 'D' }, { ex: 'triceps_polea', sets: 2, ss: 'D' },
+    { ex: 'lateral', sets: 3 },
   ] },
 ];
 
