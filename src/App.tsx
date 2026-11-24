@@ -21,7 +21,7 @@ function Login({ store }: { store: Store }) {
     const candidates = u.includes('@') ? [u] : LOGIN_DOMAINS.map((d) => `${u}@${d}`);
     let e = '';
     for (const c of candidates) { e = await store.signIn(c, PASSWORD_PREFIX + pin); if (!e) break; }
-    setMsg(e ? (/invalid login/i.test(e) ? 'Usuario o dígito incorrectos.' : e) : '');
+    setMsg(e ? (/invalid login/i.test(e) ? 'Usuario o carácter incorrectos.' : e) : '');
     setBusy(false);
   };
   return (
@@ -30,7 +30,7 @@ function Login({ store }: { store: Store }) {
       <p className="muted">Inicia sesión para continuar.</p>
       <section className="card">
         <label className="field"><span>Usuario</span><input type="text" autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} value={user} onChange={(e) => setUser(e.target.value)} /></label>
-        <label className="field"><span>Dígito</span><input type="password" inputMode="numeric" maxLength={1} autoComplete="current-password" value={pin} onChange={(e) => setPin(e.target.value.replace(/\D/g, '').slice(0, 1))} /></label>
+        <label className="field"><span>Carácter</span><input type="password" maxLength={1} autoCapitalize="none" autoCorrect="off" autoComplete="current-password" value={pin} onChange={(e) => setPin(e.target.value.slice(0, 1))} /></label>
         {msg && <p className="error">{msg}</p>}
         <button className="primary" type="submit" disabled={busy || !user || !pin}>{busy ? 'Entrando…' : 'Entrar'}</button>
       </section>
